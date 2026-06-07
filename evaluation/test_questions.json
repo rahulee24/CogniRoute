@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is the refund policy for enterprise plans?",
+    "ground_truth": "Enterprise plans offer a 14-day refund window from the date of purchase. For monthly plans, cancellations take effect at the end of the billing cycle."
+  },
+  {
+    "question": "How much does the annual team plan cost?",
+    "ground_truth": "The Team Plan Annual License is priced at $1,200/year."
+  },
+  {
+    "question": "What security compliance and certificates does the platform hold?",
+    "ground_truth": "The platform is SOC2 Type II compliant and ISO 27001 certified, enforcing AES-256 encryption at rest."
+  }
+]

@@ -1,0 +1,38 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+bin/
+include/
+lib/
+share/
+
+# Environment configurations and secret API keys
+.env
+
+# Local database files and vector store indexes
+data/
+*.db
+*.sqlite
+chroma_db/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE specific settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
