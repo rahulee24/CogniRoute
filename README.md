@@ -34,10 +34,10 @@ User query → Preprocess → Agent router → Retrieval → Rerank → Quality 
 
 | Layer | Technology |
 |---|---|
-| LLM | Claude API (`claude-sonnet-4-6`) |
+| LLM | Google Gemini API (`gemini-2.5-flash` / `gemini-2.5-pro`) |
 | Agent framework | LangChain / LangGraph |
 | Vector database | Chroma (local) / Pinecone (cloud) |
-| Embeddings | OpenAI `text-embedding-3-small` |
+| Embeddings | Google Gemini `gemini-embedding-001` (3072 dims) |
 | Reranking | Cohere Rerank v3 |
 | Web search | Tavily API |
 | Backend | FastAPI + Python 3.11+ |
@@ -118,8 +118,7 @@ cp .env.example .env
 Edit `.env` with your API keys:
 
 ```env
-ANTHROPIC_API_KEY=your_key_here
-OPENAI_API_KEY=your_key_here
+GEMINI_API_KEY=your_key_here
 COHERE_API_KEY=your_key_here
 TAVILY_API_KEY=your_key_here
 PINECONE_API_KEY=your_key_here        # optional, Chroma works locally
@@ -150,7 +149,7 @@ streamlit run frontend/app.py
 
 ### Stage 1 — Document ingestion (offline)
 
-Documents are loaded, cleaned, split into overlapping chunks (512 tokens, 64-token overlap), embedded using OpenAI embeddings, and stored in a vector database.
+Documents are loaded, cleaned, split into overlapping chunks (512 tokens, 64-token overlap), embedded using Google Gemini embeddings (`gemini-embedding-001`), and stored in a vector database.
 
 ```python
 splitter = RecursiveCharacterTextSplitter(
@@ -199,7 +198,7 @@ An LLM grader scores whether the context is sufficient to answer the query. If s
 
 ### Stage 7 — Response generation
 
-The Claude API generates a cited answer, streaming tokens back to the frontend. Session memory is updated for the next turn.
+The Google Gemini API generates a cited answer, streaming tokens back to the frontend. Session memory is updated for the next turn.
 
 ---
 
@@ -302,10 +301,9 @@ STREAMING=true
 
 ```
 python>=3.11
-anthropic>=0.25.0
+google-genai
 langchain>=0.2.0
 langchain-community>=0.2.0
-openai>=1.30.0
 cohere>=5.5.0
 tavily-python>=0.3.0
 chromadb>=0.5.0
@@ -335,4 +333,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-*Built with Claude API, LangChain, and a strong belief that AI systems should know when they don't know.*
+*Built with Google Gemini API, LangChain, and a strong belief that AI systems should know when they don't know.*
